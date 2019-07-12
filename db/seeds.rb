@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'Opening seed file'
+#Cocktail.destroy_all
 Ingredient.destroy_all
 puts 'Seeding...'
+
+
 
 Ingredient.create(name: "lemon")
 Ingredient.create(name: "ice")
