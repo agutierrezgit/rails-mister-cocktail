@@ -1,5 +1,6 @@
 
 <h1><%= @cocktail.name %></h1>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 
 <hr>
 
@@ -12,6 +13,8 @@
   <% end %>
 </ul>
 
-<p>Add doses</p>
+<p>Add doses:</p>
 
 <%= render './doses/form' %>
+
+<%= link_to 'Back to Home', cocktails_path %>
