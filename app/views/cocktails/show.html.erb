@@ -1,20 +1,23 @@
+<div class="container my-5">
+  <h1><%= @cocktail.name %></h1>
+  <hr>
+  <div class="img">
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 1000, crop: :fill %>
+  </div>
+  <hr>
 
-<h1><%= @cocktail.name %></h1>
-<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <h5>The ingredients are:</h5>
 
-<hr>
+  <ul>
+    <% @cocktail.doses.each do |dose| %>
+    <li><%= dose.ingredient.name.capitalize! %> : <%=dose.description %>  <span><%=link_to '&#183; <i class="fas fa-trash-alt"></i>'.html_safe, dose_path(dose),
+    method: :delete %></span></li>
+    <% end %>
+  </ul>
 
-<h5>The ingredients are:</h5>
+  <p>Add doses:</p>
 
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-  <li><%= dose.ingredient.name.capitalize! %> : <%=dose.description %>  <span><%=link_to '&#183; <i class="fas fa-trash-alt"></i>'.html_safe, dose_path(dose),
-        method: :delete %></span></li>
-  <% end %>
-</ul>
+  <%= render './doses/form' %>
 
-<p>Add doses:</p>
-
-<%= render './doses/form' %>
-
-<%= link_to 'Back to Home', cocktails_path %>
+  <%= link_to 'Back to Home', cocktails_path %>
+</div>
